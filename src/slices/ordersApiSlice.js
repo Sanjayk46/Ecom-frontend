@@ -76,24 +76,18 @@ import { apiSlice } from './apiSlice';
 
 export const ordersApiSlice = apiSlice.injectEndpoints({
   endpoints: builder => ({
-  createOrder: builder.mutation({
-  query: (order) => {
-    const token = localStorage.getItem('token'); // Assuming you're storing the token in localStorage
-    
-    return {
-      url: ORDERS_URL,
-      method: 'POST',
-      body: { ...order },
-      credentials: 'omit', // 'same-origin' is fine if your backend is on the same origin, otherwise use 'include'
-      headers: {
-        Authorization: `Bearer ${token}`, // Add the token to the Authorization header
-        'Content-Type': 'application/json', // Ensure content type is set
-      }
-    };
-  },
-  invalidatesTags: ['Order']
-}),
-
+   createOrder: builder.mutation({
+      query: order => ({
+        url: ORDERS_URL,
+        method: 'POST',
+        body: { ...order },
+       credentials:'include'
+        // headers: {
+        //   Authorization: `Bearer ${localStorage.getItem('token')}` // Include token from localStorage
+        // }
+      }),
+      invalidatesTags: ['Order']
+    }),
     getOrderDetails: builder.query({
       query: orderId => ({
         url: `${ORDERS_URL}/${orderId}`,
