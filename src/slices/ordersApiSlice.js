@@ -84,7 +84,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       url: ORDERS_URL,
       method: 'POST',
       body: { ...order },
-      credentials: 'include', // 'same-origin' is fine if your backend is on the same origin, otherwise use 'include'
+      credentials: 'omit', // 'same-origin' is fine if your backend is on the same origin, otherwise use 'include'
       headers: {
         Authorization: `Bearer ${token}`, // Add the token to the Authorization header
         'Content-Type': 'application/json', // Ensure content type is set
@@ -104,7 +104,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
     getMyOrders: builder.query({
       query: () => ({
         url: `${ORDERS_URL}/my-orders`,
-       credentials:'true'
+        credentials:'include'
       }),
       providesTags: ['Order']
     }),
