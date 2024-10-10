@@ -80,25 +80,19 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       query: order => ({
         url: ORDERS_URL,
         method: 'POST',
-        body: { ...order },
-        credentials:'include'
-        // headers: {
-        //   Authorization: `Bearer ${localStorage.getItem('token')}` // Include token from localStorage
-        // }
+        body: { ...order }
       }),
       invalidatesTags: ['Order']
     }),
     getOrderDetails: builder.query({
       query: orderId => ({
-        url: `${ORDERS_URL}/${orderId}`,
-        credentials:'include'
+        url: `${ORDERS_URL}/${orderId}`
       }),
       providesTags: ['Order']
     }),
     getMyOrders: builder.query({
       query: () => ({
-        url: `${ORDERS_URL}/my-orders`,
-        credentials:'include'
+        url: `${ORDERS_URL}/my-orders`
       }),
       providesTags: ['Order']
     }),
@@ -106,16 +100,14 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       query: ({ orderId, details }) => ({
         url: `${ORDERS_URL}/${orderId}/pay`,
         method: 'PUT',
-        body: { ...details },
-        credentials:'true'
+        body: { ...details }
       }),
       invalidatesTags: ['Order']
     }),
     updateDeliver: builder.mutation({
       query: orderId => ({
         url: `${ORDERS_URL}/${orderId}/deliver`,
-        method: 'PUT',
-        credentials:'include'
+        method: 'PUT'
       }),
       invalidatesTags: ['Order']
     }),
@@ -127,8 +119,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
     }),
     getOrders: builder.query({
       query: () => ({
-        url: ORDERS_URL,
-        credentials:'include'
+        url: ORDERS_URL
       }),
       providesTags: ['Order']
     })
