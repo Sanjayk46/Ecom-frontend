@@ -23,7 +23,9 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
     }),
     getMyOrders: builder.query({
       query: () => ({
-        url: `${ORDERS_URL}/my-orders`
+        url: `${ORDERS_URL}/my-orders`,
+        method:'GET',
+        credentials:'include'
       }),
       providesTags: ['Order']
     }),
