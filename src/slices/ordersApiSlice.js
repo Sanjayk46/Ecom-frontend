@@ -81,6 +81,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         url: ORDERS_URL,
         method: 'POST',
         body: { ...order },
+       credentials:'true'
       }),
       invalidatesTags: ['Order']
     }),
