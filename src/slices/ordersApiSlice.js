@@ -8,10 +8,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         url: ORDERS_URL,
         method: 'POST',
         body: { ...order },
-        credentials:'include'
-        // headers: {
-        //   Authorization: `Bearer ${localStorage.getItem('token')}` // Include token from localStorage
-        // }
+        credentials:'true'
       }),
       invalidatesTags: ['Order']
     }),
@@ -26,7 +23,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: `${ORDERS_URL}/my-orders`,
         method:'GET',
-        credentials:'include'
+        credentials:'true'
       }),
       providesTags: ['Order']
     }),
