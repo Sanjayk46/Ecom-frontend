@@ -8,7 +8,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
         url: ORDERS_URL,
         method: 'POST',
         body: { ...order },
-        credentials:'true'
+        credentials:'include'
       }),
       invalidatesTags: ['Order']
     }),
@@ -23,7 +23,7 @@ export const ordersApiSlice = apiSlice.injectEndpoints({
       query: () => ({
         url: `${ORDERS_URL}/my-orders`,
         method:'GET',
-        credentials:'true'
+        credentials:'include'
       }),
       providesTags: ['Order']
     }),
